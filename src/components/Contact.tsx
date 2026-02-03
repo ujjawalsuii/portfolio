@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Mail, Linkedin, Github, Download, ArrowUpRight } from 'lucide-react'
+import { Mail, Linkedin, Github, Download } from 'lucide-react'
 
 const styles = {
     section: {
