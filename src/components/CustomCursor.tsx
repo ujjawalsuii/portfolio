@@ -57,7 +57,7 @@ export const CustomCursor = () => {
             }}
         >
             <img
-                src="/peacockcursor.png"
+                src={`${import.meta.env.BASE_URL}peacockcursor.png`}
                 alt=""
                 style={{
                     width: '40px',

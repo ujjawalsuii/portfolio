@@ -139,7 +139,7 @@ export const About = () => {
                     >
                         <div style={styles.imageGlow} />
                         <motion.img
-                            src="/Me.jpg"
+                            src={`${import.meta.env.BASE_URL}Me.jpg`}
                             alt="Ujjawal Pratap"
                             style={{
                                 ...styles.image,
@@ -234,7 +234,7 @@ export const About = () => {
                     >
                         <div style={styles.imageGlow} />
                         <motion.img
-                            src="/Me.jpg"
+                            src={`${import.meta.env.BASE_URL}Me.jpg`}
                             alt="Ujjawal Pratap"
                             style={styles.image}
                             whileHover={{

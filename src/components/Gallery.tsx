@@ -3,24 +3,27 @@ import { useState } from 'react'
 import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import { useIsMobile } from '../hooks/useMediaQuery'
 
+// Helper function to get correct path for GitHub Pages
+const getAssetPath = (path: string) => `${import.meta.env.BASE_URL}${path.startsWith('/') ? path.slice(1) : path}`
+
 // Adventures media files
 const adventuresMedia = [
-    { type: 'image', src: '/Adventures/IMG_2246.JPEG' },
-    { type: 'image', src: '/Adventures/IMG_2333.JPEG' },
-    { type: 'image', src: '/Adventures/IMG_2883.JPEG' },
-    { type: 'image', src: '/Adventures/IMG_7832.JPEG' },
-    { type: 'image', src: '/Adventures/e765ea3a-2abd-41e5-a015-90f8b7c51ba5.JPEG' },
-    { type: 'image', src: '/Adventures/FullSizeRender.JPEG' },
-    { type: 'video', src: '/Adventures/3C7194DA-4599-47E6-B3EB-E994421027D3.MP4' },
-    { type: 'video', src: '/Adventures/IMG_2918.MP4' },
+    { type: 'image', src: 'Adventures/IMG_2246.JPEG' },
+    { type: 'image', src: 'Adventures/IMG_2333.JPEG' },
+    { type: 'image', src: 'Adventures/IMG_2883.JPEG' },
+    { type: 'image', src: 'Adventures/IMG_7832.JPEG' },
+    { type: 'image', src: 'Adventures/e765ea3a-2abd-41e5-a015-90f8b7c51ba5.JPEG' },
+    { type: 'image', src: 'Adventures/FullSizeRender.JPEG' },
+    { type: 'video', src: 'Adventures/3C7194DA-4599-47E6-B3EB-E994421027D3.MP4' },
+    { type: 'video', src: 'Adventures/IMG_2918.MP4' },
 ]
 
 // Moments media files
 const momentsMedia = [
-    { type: 'image', src: '/Moments/IMG_7652.JPEG' },
-    { type: 'image', src: '/Moments/IMG_8816.JPEG' },
-    { type: 'video', src: '/Moments/copy_02F64FF5-6B85-46EB-9C0D-A54C0FF1E6FE.MOV' },
-    { type: 'video', src: '/Moments/copy_CF054E75-09AE-4780-BC9F-B1F715FE12A2.MOV' },
+    { type: 'image', src: 'Moments/IMG_7652.JPEG' },
+    { type: 'image', src: 'Moments/IMG_8816.JPEG' },
+    { type: 'video', src: 'Moments/copy_02F64FF5-6B85-46EB-9C0D-A54C0FF1E6FE.MOV' },
+    { type: 'video', src: 'Moments/banff.mp4' },
 ]
 
 // Family stories - special format with image + story
@@ -28,7 +31,7 @@ const familyStories = [
     {
         id: 'mom',
         title: 'My Mom',
-        image: '/Family/My-mom.JPEG',
+        image: 'Family/My-mom.JPEG',
         story: `My mom is my biggest supporter. She has always guided me to do the right thing and taught me that no dream is ever too far if you just believe in Krishna.
 
 She always took amazing care of me. Even when she was tired or sick, she would still make sure I felt comfortable and had something to eat. Even when she insisted that she was fine and that the burn she got from holding a hot pan was nothing, she would still make sure I was always smiling.
@@ -39,30 +42,30 @@ No amount of words can describe how grateful I am to have such an incredible mot
 
 // Family media (other photos)
 const familyMedia = [
-    { type: 'image', src: '/Family/FullSizeRender.JPEG' },
-    { type: 'image', src: '/Family/cecf81fd-ad55-4074-8375-08a4d5e6cabd.JPEG' },
-    { type: 'image', src: '/Family/d648969d-60b5-4176-9acf-9212bc744c74.JPEG' },
+    { type: 'image', src: 'Family/FullSizeRender.JPEG' },
+    { type: 'image', src: 'Family/cecf81fd-ad55-4074-8375-08a4d5e6cabd.JPEG' },
+    { type: 'image', src: 'Family/d648969d-60b5-4176-9acf-9212bc744c74.JPEG' },
 ]
 
 const categories = [
     {
         id: 'family',
         title: 'Family',
-        cover: '/Family/FullSizeRender.JPEG',
+        cover: 'Family/FullSizeRender.JPEG',
         hasContent: true,
         isStoryType: true
     },
     {
         id: 'adventures',
         title: 'Adventures',
-        cover: '/Adventures/IMG_2246.JPEG',
+        cover: 'Adventures/IMG_2246.JPEG',
         hasContent: true,
         media: adventuresMedia
     },
     {
         id: 'moments',
         title: 'Moments',
-        cover: '/Moments/IMG_7652.JPEG',
+        cover: 'Moments/IMG_7652.JPEG',
         hasContent: true,
         media: momentsMedia
     },
@@ -394,7 +397,7 @@ export const Gallery = () => {
                                 onClick={() => openCategory(cat)}
                             >
                                 <img
-                                    src={cat.cover}
+                                    src={getAssetPath(cat.cover)}
                                     alt={cat.title}
                                     style={styles.cardImage}
                                     onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
@@ -443,7 +446,7 @@ export const Gallery = () => {
                                 style={styles.storyCard}
                             >
                                 <img
-                                    src={story.image}
+                                    src={getAssetPath(story.image)}
                                     alt={story.title}
                                     style={styles.storyImage}
                                 />
@@ -474,7 +477,7 @@ export const Gallery = () => {
                                         if (img) img.style.transform = 'scale(1)'
                                     }}
                                 >
-                                    <img src={item.src} alt="" style={styles.mediaImage} />
+                                    <img src={getAssetPath(item.src)} alt="" style={styles.mediaImage} />
                                 </motion.div>
                             ))}
                         </div>
@@ -525,10 +528,10 @@ export const Gallery = () => {
                                     }}
                                 >
                                     {item.type === 'image' ? (
-                                        <img src={item.src} alt="" style={styles.mediaImage} />
+                                        <img src={getAssetPath(item.src)} alt="" style={styles.mediaImage} />
                                     ) : (
                                         <>
-                                            <video src={item.src} style={styles.mediaImage} muted />
+                                            <video src={getAssetPath(item.src)} style={styles.mediaImage} muted />
                                             <div style={styles.videoOverlay}>
                                                 <Play size={24} />
                                             </div>
@@ -567,14 +570,14 @@ export const Gallery = () => {
 
                         return item.type === 'image' ? (
                             <img
-                                src={item.src}
+                                src={getAssetPath(item.src)}
                                 alt=""
                                 style={styles.lightboxMedia}
                                 onClick={(e) => e.stopPropagation()}
                             />
                         ) : (
                             <video
-                                src={item.src}
+                                src={getAssetPath(item.src)}
                                 style={styles.lightboxMedia}
                                 controls
                                 autoPlay

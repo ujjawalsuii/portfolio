@@ -190,7 +190,7 @@ export const Contact = () => {
                 </motion.div>
 
                 <motion.a
-                    href="/CV.pdf"
+                    href={`${import.meta.env.BASE_URL}CV.pdf`}
                     download
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

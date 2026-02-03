@@ -19,7 +19,7 @@ const styles = {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundImage: 'url(/background.png)',
+        backgroundImage: `url(${import.meta.env.BASE_URL}background.png)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         zIndex: 0
