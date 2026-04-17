@@ -5,9 +5,9 @@ import { useIsMobile, useIsTablet } from '../hooks/useMediaQuery'
 const categories = [
     { title: 'Languages', skills: ['Java', 'Python', 'JavaScript', 'TypeScript', 'SQL', 'C', 'Bash', 'RISC-V'], icon: '⚡' },
     { title: 'Machine Learning', skills: ['Generative AI', 'LLM Orchestration', 'RAG', 'NLP', 'PyTorch', 'RL'], icon: '🧠' },
-    { title: 'Web & Backend', skills: ['React 18', 'Node.js', 'FastAPI', 'TailwindCSS', 'WebSocket/SSE', 'REST APIs'], icon: '🌐' },
+    { title: 'Web & Backend', skills: ['React 18', 'Node.js', 'Django', 'DRF', 'FastAPI', 'TailwindCSS', 'WebSocket/SSE', 'REST APIs'], icon: '🌐' },
     { title: 'DevOps & Tools', skills: ['Docker', 'CI/CD', 'GitHub Actions', 'Git', 'Linux/Unix', 'VS Code'], icon: '⚙️' },
-    { title: 'Cloud & Database', skills: ['Firebase', 'Firestore', 'MongoDB', 'PostgreSQL', 'GCP'], icon: '☁️' },
+    { title: 'Cloud & Database', skills: ['Firebase', 'Firestore', 'MongoDB', 'PostgreSQL', 'Heroku', 'Cloudinary', 'GCP'], icon: '☁️' },
     { title: 'Data & Analytics', skills: ['Query Optimization', 'Data Pipelines', 'JSON Processing', 'System Design'], icon: '📊' }
 ]
 
