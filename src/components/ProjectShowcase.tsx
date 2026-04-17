@@ -20,6 +20,14 @@ const projects = [
     },
     {
         id: '03',
+        name: 'Social Distribution',
+        type: 'Backend',
+        desc: 'Federated social network where independent nodes exchange entries, likes, comments, and follows via an inbox API. Built with Django REST Framework.',
+        tags: ['Django', 'DRF', 'PostgreSQL'],
+        link: 'https://github.com/uofa-cmput404/w26-socialdistribution-project-fuchsia'
+    },
+    {
+        id: '04',
         name: 'RISC-V Translator',
         type: 'Compiler',
         desc: 'Static binary translator converting RISC-V assembly to WebAssembly. Enables running low-level ASM on the web.',

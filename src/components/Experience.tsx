@@ -2,11 +2,19 @@ import { motion } from 'framer-motion'
 
 const experiences = [
     {
-        date: 'Jan 2026',
+        date: 'Jan - Apr 2026',
+        title: 'Social Distribution',
+        subtitle: 'Federated Social Network - CMPUT 404',
+        desc: 'Django-based federated social network where independent nodes exchange entries, likes, comments, and follows via an inbox API. Built visibility tiers (public/unlisted/friends-only), GitHub activity sync, and HTTP Basic Auth between nodes. Deployed on Heroku with PostgreSQL and Cloudinary.',
+        status: 'ongoing',
+        tags: ['Django', 'DRF', 'PostgreSQL', 'Heroku']
+    },
+    {
+        date: 'Jan - Feb 2026',
         title: 'Leo the Lion',
         subtitle: 'TELUS Health Hackathon - Top 5',
         desc: 'Pediatric AI health companion using LLMs for symptom analysis and emotional support. Currently adding Leo Vision for object identification.',
-        status: 'ongoing',
+        status: 'completed',
         tags: ['React', 'Python', 'RAG', 'LLM']
     },
     {

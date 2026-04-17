@@ -18,6 +18,13 @@ const projects = [
         link: 'https://github.com/Gfewq/Team'
     },
     {
+        name: 'Social Distribution',
+        subtitle: 'Backend & Federation',
+        desc: 'Federated social network with inbox-based node-to-node delivery.',
+        tags: ['Django', 'DRF', 'PostgreSQL'],
+        link: 'https://github.com/uofa-cmput404/w26-socialdistribution-project-fuchsia'
+    },
+    {
         name: 'RISC-V Translator',
         subtitle: 'Systems & Compilers',
         desc: 'Binary translator: RISC-V to WebAssembly.',
