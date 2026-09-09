@@ -1,0 +1,11 @@
+/* The shared ground. Fixed, so the field is a space the page moves through
+   rather than a texture that scrolls with it. */
+.ambient {
+    position: fixed;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}

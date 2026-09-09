@@ -10,7 +10,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '120px 48px',
-        backgroundColor: 'var(--bg-secondary)',
+        backgroundColor: 'transparent',
         position: 'relative' as const,
         overflow: 'hidden'
     },
@@ -72,7 +72,7 @@ const styles = {
     card: {
         padding: '20px',
         borderLeft: '2px solid var(--accent-gold)',
-        backgroundColor: 'rgba(36, 46, 30, 0.5)'
+        backgroundColor: 'var(--glass)'
     },
     cardTitle: {
         fontFamily: 'var(--font-display)',
@@ -185,9 +185,16 @@ export const About = () => {
                             style={styles.bio}
                         >
                             <p style={styles.paragraph}>
-                                I'm a 3rd-year Computing Science student at the{' '}
+                                I'm a final-year Computing Science student at the{' '}
                                 <span style={styles.highlight}>University of Alberta</span>,
-                                but my journey isn't just about code.
+                                on a{' '}
+                                <span style={styles.goldHighlight}>$10,000 Regional Excellence Scholarship</span>
+                                &nbsp;— but my journey isn't just about code.
+                            </p>
+                            <p style={styles.paragraph}>
+                                I've shipped production software for a paying client as sole developer, and
+                                placed <span style={styles.highlight}>top 5 at the TELUS hackathon</span>{' '}
+                                building an AI health platform.
                             </p>
                             <p style={styles.paragraph}>
                                 Whether optimizing a C-based Ray Tracer or pushing for a{' '}

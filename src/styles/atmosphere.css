@@ -1,0 +1,89 @@
+/* Shared page chrome.
+   The sections used to alternate between two opaque olives, which read as a
+   stack of separate blocks. They are transparent now and ride over one shared
+   ambient field, so rhythm has to come from hairlines and spacing instead. */
+
+:root {
+    /* One surface vocabulary for every card on the page. */
+    --glass: rgba(245, 240, 230, 0.035);
+    --glass-raised: rgba(245, 240, 230, 0.06);
+    --glass-line: rgba(245, 240, 230, 0.09);
+    --glass-line-strong: rgba(201, 169, 98, 0.32);
+}
+
+/* Content rides above the fixed ambient canvas. */
+main > section,
+nav,
+header,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hairline where a solid colour change used to do the work. */
+main > section + section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1120px, 84vw);
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.24), transparent);
+}
+
+/* Text needs a floor to sit on now that a moving field is behind it. Applied
+   to the section, not the copy, so it never clips a heading. */
+.atmo-scrim::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(70% 55% at 50% 50%, rgba(10, 14, 8, 0.72) 0%, rgba(10, 14, 8, 0.34) 55%, transparent 100%);
+}
+
+/* --- Small polish that reads as care --- */
+
+::selection {
+    background: rgba(201, 169, 98, 0.28);
+    color: var(--text-cream);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+html {
+    scrollbar-color: rgba(201, 169, 98, 0.4) transparent;
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(201, 169, 98, 0.28);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(201, 169, 98, 0.5);
+    background-clip: content-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}

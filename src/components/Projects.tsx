@@ -4,37 +4,51 @@ import { useIsMobile } from '../hooks/useMediaQuery'
 
 const projects = [
     {
-        name: 'C-Ray Engine',
-        subtitle: 'Graphics & Physics',
-        desc: 'Physics-based ray tracer built from scratch in C.',
-        tags: ['C', 'Linux', 'Graphics'],
-        link: 'https://github.com/ujjawalsuii/c-ray-engine'
+        name: 'Kritanshi Boutique',
+        subtitle: 'Freelance · Production E-Commerce',
+        desc: 'Storefront and admin CMS shipped solo for an Abu Dhabi retail client. WhatsApp ordering, RLS-enforced writes, 99/100 Lighthouse.',
+        tags: ['Next.js 16', 'TypeScript', 'Supabase'],
+        link: 'https://kritanshiboutique.com/'
     },
     {
         name: 'Leo the Lion',
-        subtitle: 'AI & Healthcare',
-        desc: 'Pediatric health companion using LLMs.',
-        tags: ['React', 'Python', 'RAG'],
+        subtitle: 'AI & Healthcare · TELUS Top 5',
+        desc: 'Pediatric health companion grounding Gemma 3 in medical protocols through a Python RAG engine.',
+        tags: ['React 18', 'FastAPI', 'RAG'],
         link: 'https://github.com/Gfewq/Team'
+    },
+    {
+        name: 'WebAble',
+        subtitle: 'Accessibility & On-Device ML',
+        desc: 'All-in-one accessibility extension: ASL-to-text, live captions, TTS, dyslexia and epilepsy-safe modes. 60 FPS gesture classification from a hand-written MLP in vanilla JS, fully on-device.',
+        tags: ['JavaScript', 'MediaPipe', 'Chrome APIs'],
+        link: 'https://github.com/ujjawalsuii/popowich-WebAble'
     },
     {
         name: 'Social Distribution',
         subtitle: 'Backend & Federation',
-        desc: 'Federated social network with inbox-based node-to-node delivery.',
+        desc: 'Federated social network with inbox-based node-to-node delivery and a three-tier visibility model.',
         tags: ['Django', 'DRF', 'PostgreSQL'],
         link: 'https://github.com/uofa-cmput404/w26-socialdistribution-project-fuchsia'
     },
     {
+        name: 'C-Ray Engine',
+        subtitle: 'Graphics & Physics',
+        desc: 'Physics-based ray tracer built from scratch in C with BVH acceleration and global illumination.',
+        tags: ['C', 'Linux', 'Graphics'],
+        link: 'https://github.com/ujjawalsuii/c-ray-engine'
+    },
+    {
         name: 'RISC-V Translator',
         subtitle: 'Systems & Compilers',
-        desc: 'Binary translator: RISC-V to WebAssembly.',
+        desc: 'Binary translator mapping RISC-V branching to WebAssembly structured control flow.',
         tags: ['C', 'WASM', 'Assembly'],
         link: 'https://github.com/ujjawalsuii/rv-to-wasm'
     },
     {
         name: 'Aurora',
         subtitle: 'Mobile Engineering',
-        desc: 'Event lottery system booking app for Android.',
+        desc: 'Event lottery system for Android with unbiased waitlist selection and Firestore real-time sync.',
         tags: ['Java', 'Android', 'Firebase'],
         link: 'https://github.com/CMPUT301F25aurora/aurora-borealis'
     }
@@ -49,7 +63,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '120px 48px',
-        backgroundColor: 'var(--bg-primary)'
+        backgroundColor: 'transparent'
     },
     container: {
         maxWidth: '900px',
@@ -79,8 +93,8 @@ const styles = {
     },
     card: {
         padding: '40px',
-        backgroundColor: 'transparent',
-        border: '1px solid rgba(107, 107, 95, 0.2)',
+        backgroundColor: 'var(--glass)',
+        border: '1px solid var(--glass-line)',
         display: 'flex',
         flexDirection: 'column' as const,
         justifyContent: 'space-between',
@@ -172,14 +186,14 @@ export const Projects = () => {
                     {projects.map((project, index) => (
                         <motion.a
                             key={project.name}
-                            href={project.link}
-                            target="_blank"
-                            rel="noreferrer"
+                            {...(project.link
+                                ? { href: project.link, target: '_blank', rel: 'noreferrer' }
+                                : {})}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            whileHover={{ y: -4, borderColor: 'rgba(201, 169, 98, 0.4)' }}
+                            whileHover={{ y: -4, borderTopColor: 'rgba(201, 169, 98, 0.4)', borderRightColor: 'rgba(201, 169, 98, 0.4)', borderBottomColor: 'rgba(201, 169, 98, 0.4)', borderLeftColor: 'rgba(201, 169, 98, 0.4)' }}
                             style={{
                                 ...styles.card,
                                 padding: isMobile ? '24px' : '40px',
@@ -195,9 +209,11 @@ export const Projects = () => {
                                             fontSize: isMobile ? '20px' : '24px'
                                         }}>{project.name}</h3>
                                     </div>
-                                    <div style={styles.arrow}>
-                                        <ArrowUpRight size={16} />
-                                    </div>
+                                    {project.link && (
+                                        <div style={styles.arrow}>
+                                            <ArrowUpRight size={16} />
+                                        </div>
+                                    )}
                                 </div>
                                 <p style={styles.desc}>{project.desc}</p>
                             </div>

@@ -22,6 +22,10 @@ const styles = {
         backgroundImage: `url(${import.meta.env.BASE_URL}background.png)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        opacity: 0.34,
+        filter: 'saturate(0.82) contrast(1.04)',
+        WebkitMaskImage: 'linear-gradient(to bottom, #000 0%, #000 40%, transparent 92%)',
+        maskImage: 'linear-gradient(to bottom, #000 0%, #000 40%, transparent 92%)',
         zIndex: 0
     },
     overlay: {
@@ -30,7 +34,7 @@ const styles = {
         left: 0,
         right: 0,
         bottom: 0,
-        background: 'linear-gradient(to bottom, rgba(26, 35, 22, 0.3) 0%, rgba(26, 35, 22, 0.5) 50%, rgba(26, 35, 22, 0.95) 100%)',
+        background: 'linear-gradient(to bottom, rgba(10, 14, 8, 0.72) 0%, rgba(10, 14, 8, 0.52) 42%, rgba(10, 14, 8, 0.14) 100%)',
         zIndex: 1
     },
     content: {
@@ -203,7 +207,7 @@ export const Hero = () => {
                     transition={{ delay: 1 }}
                     style={styles.subtitle}
                 >
-                    3rd-year Computing Science at the University of Alberta.
+                    Final-year Computing Science at the University of Alberta.
                     <br />
                     Building high-performance systems with elite discipline.
                 </motion.p>

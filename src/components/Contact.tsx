@@ -10,7 +10,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '120px 48px',
-        backgroundColor: 'var(--bg-secondary)',
+        backgroundColor: 'transparent',
         position: 'relative' as const
     },
     container: {

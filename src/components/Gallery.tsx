@@ -79,7 +79,7 @@ const styles = {
         flexDirection: 'column' as const,
         alignItems: 'center',
         padding: '120px 48px 80px',
-        backgroundColor: 'var(--bg-primary)'
+        backgroundColor: 'transparent'
     },
     container: {
         maxWidth: '1000px',
@@ -248,8 +248,8 @@ const styles = {
         gap: '64px',
         marginBottom: '64px',
         padding: '48px',
-        backgroundColor: 'var(--bg-secondary)',
-        border: '1px solid rgba(107, 107, 95, 0.15)'
+        backgroundColor: 'var(--glass)',
+        border: '1px solid var(--glass-line)'
     },
     storyImage: {
         width: '100%',

@@ -1,14 +1,15 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { BrainCircuit, Code2, Database, LayoutTemplate, Server, ShieldCheck } from 'lucide-react'
 import { useIsMobile, useIsTablet } from '../hooks/useMediaQuery'
 
 const categories = [
-    { title: 'Languages', skills: ['Java', 'Python', 'JavaScript', 'TypeScript', 'SQL', 'C', 'Bash', 'RISC-V'], icon: '⚡' },
-    { title: 'Machine Learning', skills: ['Generative AI', 'LLM Orchestration', 'RAG', 'NLP', 'PyTorch', 'RL'], icon: '🧠' },
-    { title: 'Web & Backend', skills: ['React 18', 'Node.js', 'Django', 'DRF', 'FastAPI', 'TailwindCSS', 'WebSocket/SSE', 'REST APIs'], icon: '🌐' },
-    { title: 'DevOps & Tools', skills: ['Docker', 'CI/CD', 'GitHub Actions', 'Git', 'Linux/Unix', 'VS Code'], icon: '⚙️' },
-    { title: 'Cloud & Database', skills: ['Firebase', 'Firestore', 'MongoDB', 'PostgreSQL', 'Heroku', 'Cloudinary', 'GCP'], icon: '☁️' },
-    { title: 'Data & Analytics', skills: ['Query Optimization', 'Data Pipelines', 'JSON Processing', 'System Design'], icon: '📊' }
+    { title: 'Languages', skills: ['Python', 'Java', 'JavaScript', 'TypeScript', 'SQL', 'C / C99', 'Bash', 'RISC-V'], icon: Code2 },
+    { title: 'AI & Machine Learning', skills: ['RAG', 'LLM Orchestration', 'NLP', 'Computer Vision', 'PyTorch', 'TensorFlow', 'TensorFlow.js', 'Sentence Transformers', 'Google Gemma & Gemini', 'MediaPipe', 'Neural Networks', 'Reinforcement Learning', 'Prompt Engineering'], icon: BrainCircuit },
+    { title: 'Web & Frontend', skills: ['React', 'Next.js 16', 'TailwindCSS', 'React Three Fiber', 'Chrome Extension APIs', 'HTML / CSS', 'Web Speech API'], icon: LayoutTemplate },
+    { title: 'Backend & APIs', skills: ['FastAPI', 'Django', 'Django REST Framework', 'Node.js', 'REST APIs', 'Server-Sent Events', 'Server Actions', 'Gunicorn'], icon: Server },
+    { title: 'Data & Storage', skills: ['PostgreSQL', 'Supabase', 'MongoDB', 'SQLite', 'Firebase Firestore', 'Cloudinary', 'Pandas', 'NumPy', 'Query Optimization', 'Data Pipelines'], icon: Database },
+    { title: 'Cloud, DevOps & Security', skills: ['Vercel', 'Docker', 'Heroku', 'Firebase / GCP', 'GitHub Actions', 'CI/CD', 'Git', 'Linux/Unix', 'Row Level Security', 'RBAC', 'Session Auth'], icon: ShieldCheck }
 ]
 
 const styles = {
@@ -20,7 +21,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '120px 48px',
-        backgroundColor: 'var(--bg-secondary)',
+        backgroundColor: 'transparent',
         perspective: '1000px'
     },
     container: {
@@ -50,12 +51,14 @@ const styles = {
         gap: '24px'
     },
     cardWrapper: {
-        perspective: '1000px'
+        perspective: '1000px',
+        height: '100%'
     },
     card: {
         padding: '32px',
-        backgroundColor: 'var(--bg-card)',
-        border: '1px solid rgba(107, 107, 95, 0.15)',
+        backgroundColor: 'var(--glass)',
+        border: '1px solid var(--glass-line)',
+        height: '100%',
         transformStyle: 'preserve-3d' as const,
         transition: 'box-shadow 0.3s ease'
     },
@@ -68,7 +71,9 @@ const styles = {
         borderBottom: '1px solid rgba(107, 107, 95, 0.15)'
     },
     cardIcon: {
-        fontSize: '24px',
+        display: 'flex',
+        alignItems: 'center',
+        color: 'var(--accent-gold)',
         transform: 'translateZ(30px)'
     },
     cardTitle: {
@@ -151,20 +156,9 @@ const TiltCard = ({ category, index, isMobile }: { category: typeof categories[0
                 }}
             >
                 <div style={styles.cardHeader}>
-                    <motion.span
-                        style={styles.cardIcon}
-                        animate={isMobile ? {} : {
-                            y: [0, -5, 0],
-                            rotate: [0, 5, -5, 0]
-                        }}
-                        transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            delay: index * 0.2
-                        }}
-                    >
-                        {category.icon}
-                    </motion.span>
+                    <span style={styles.cardIcon}>
+                        <category.icon size={18} strokeWidth={1.5} />
+                    </span>
                     <h3 style={styles.cardTitle}>{category.title}</h3>
                 </div>
                 <div style={styles.skillList}>

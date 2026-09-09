@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { AmbientField } from './components/ambient/AmbientField'
 import { Hero } from './components/Hero'
+import { Showcase } from './components/showcase/Showcase'
 import { About } from './components/About'
 import { TechArsenal } from './components/TechArsenal'
 import { Projects } from './components/Projects'
@@ -17,10 +19,12 @@ function App() {
     <>
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       <div className="app-container" style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.3s' }}>
+        <AmbientField />
         <CustomCursor />
         <Navigation />
         <main>
           <Hero />
+          <Showcase />
           <About />
           <Experience />
           <Projects />
