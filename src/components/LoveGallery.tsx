@@ -23,7 +23,7 @@ export const LoveGallery = () => {
                         transition={{ delay: i * 0.2 }}
                         whileHover={{
                             scale: 1.05,
-                            rotateZ: Math.random() * 4 - 2,
+                            rotateZ: i % 2 === 0 ? -2 : 2,
                             boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
                         }}
                         className="w-64 h-80 bg-white p-3 shadow-md relative transform cursor-pointer"

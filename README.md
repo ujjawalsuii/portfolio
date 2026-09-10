@@ -1,73 +1,28 @@
-# React + TypeScript + Vite
+# Ujjawal Pratap — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React and TypeScript portfolio built with Vite. The design uses oversized typography, an indexed project list, a full experience timeline, personal photo albums, and a lazy-loaded WebGL signature study.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `npm ci` installs the locked dependencies.
+- `npm run dev` starts the local site.
+- `npm run build` creates the production site in `dist/`.
+- `npm run preview` serves that production build.
+- `npm run lint` checks the source.
 
-## React Compiler
+The relative asset base supports both a root domain and GitHub Pages under `/portfolio/`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Content and media
 
-## Expanding the ESLint configuration
+All existing project descriptions, timeline entries, skill categories, gallery records, and the family story are preserved in `src/data/portfolio.ts`. The original photos, videos, and resume remain in `public/`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+`public/media/` contains smaller WebP images, video posters, and browser-compatible H.264/AAC videos. `src/data/media.json` maps original media to these delivery copies. Original full-resolution photos remain available from the gallery viewer. Videos are requested only when the viewer is opened. Production builds omit redundant original video files after verifying their delivery copies exist.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+To regenerate delivery copies, use Python with Pillow and imageio-ffmpeg, then run `python scripts/optimize-media.py`. The current copies are committed, so this step is not required for ordinary installation or deployment.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Verification
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `node scripts/verify-content.mjs` compares every original data group with the snapshot from before the redesign and checks original asset files.
+- `node scripts/verify-render.mjs` checks rendered sections, biography and contact text, project links, and navigation destinations.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The photo albums use native modal dialogs for focus containment and Escape handling, with arrow-key navigation in the media viewer. The site respects reduced motion, supports keyboard focus, retains normal scrolling and the native cursor, and renders main content without a loading gate. The WebGL section loads near the viewport, pauses off-screen, and provides a fallback when rendering is unavailable.

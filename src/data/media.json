@@ -1,0 +1,124 @@
+{
+  "background.png": {
+    "small": "media/background-720.webp",
+    "large": "media/background-1800.webp",
+    "width": 1584,
+    "height": 672,
+    "type": "image"
+  },
+  "Me.jpg": {
+    "small": "media/Me-720.webp",
+    "large": "media/Me-1800.webp",
+    "width": 4284,
+    "height": 5712,
+    "type": "image"
+  },
+  "Adventures/3C7194DA-4599-47E6-B3EB-E994421027D3.MP4": {
+    "small": "media/Adventures-3C7194DA-4599-47E6-B3EB-E994421027D3.mp4",
+    "large": "media/Adventures-3C7194DA-4599-47E6-B3EB-E994421027D3.mp4",
+    "poster": "media/Adventures-3C7194DA-4599-47E6-B3EB-E994421027D3-poster.webp",
+    "type": "video"
+  },
+  "Adventures/e765ea3a-2abd-41e5-a015-90f8b7c51ba5.JPEG": {
+    "small": "media/Adventures-e765ea3a-2abd-41e5-a015-90f8b7c51ba5-720.webp",
+    "large": "media/Adventures-e765ea3a-2abd-41e5-a015-90f8b7c51ba5-1800.webp",
+    "width": 1600,
+    "height": 1200,
+    "type": "image"
+  },
+  "Adventures/FullSizeRender.JPEG": {
+    "small": "media/Adventures-FullSizeRender-720.webp",
+    "large": "media/Adventures-FullSizeRender-1800.webp",
+    "width": 2268,
+    "height": 4032,
+    "type": "image"
+  },
+  "Adventures/IMG_2246.JPEG": {
+    "small": "media/Adventures-IMG_2246-720.webp",
+    "large": "media/Adventures-IMG_2246-1800.webp",
+    "width": 2268,
+    "height": 4032,
+    "type": "image"
+  },
+  "Adventures/IMG_2333.JPEG": {
+    "small": "media/Adventures-IMG_2333-720.webp",
+    "large": "media/Adventures-IMG_2333-1800.webp",
+    "width": 1980,
+    "height": 3520,
+    "type": "image"
+  },
+  "Adventures/IMG_2883.JPEG": {
+    "small": "media/Adventures-IMG_2883-720.webp",
+    "large": "media/Adventures-IMG_2883-1800.webp",
+    "width": 2364,
+    "height": 1330,
+    "type": "image"
+  },
+  "Adventures/IMG_2918.MP4": {
+    "small": "media/Adventures-IMG_2918.mp4",
+    "large": "media/Adventures-IMG_2918.mp4",
+    "poster": "media/Adventures-IMG_2918-poster.webp",
+    "type": "video"
+  },
+  "Adventures/IMG_7832.JPEG": {
+    "small": "media/Adventures-IMG_7832-720.webp",
+    "large": "media/Adventures-IMG_7832-1800.webp",
+    "width": 2364,
+    "height": 1330,
+    "type": "image"
+  },
+  "Family/cecf81fd-ad55-4074-8375-08a4d5e6cabd.JPEG": {
+    "small": "media/Family-cecf81fd-ad55-4074-8375-08a4d5e6cabd-720.webp",
+    "large": "media/Family-cecf81fd-ad55-4074-8375-08a4d5e6cabd-1800.webp",
+    "width": 1280,
+    "height": 959,
+    "type": "image"
+  },
+  "Family/d648969d-60b5-4176-9acf-9212bc744c74.JPEG": {
+    "small": "media/Family-d648969d-60b5-4176-9acf-9212bc744c74-720.webp",
+    "large": "media/Family-d648969d-60b5-4176-9acf-9212bc744c74-1800.webp",
+    "width": 4032,
+    "height": 3024,
+    "type": "image"
+  },
+  "Family/FullSizeRender.JPEG": {
+    "small": "media/Family-FullSizeRender-720.webp",
+    "large": "media/Family-FullSizeRender-1800.webp",
+    "width": 1330,
+    "height": 2364,
+    "type": "image"
+  },
+  "Family/My-mom.JPEG": {
+    "small": "media/Family-My-mom-720.webp",
+    "large": "media/Family-My-mom-1800.webp",
+    "width": 1980,
+    "height": 3520,
+    "type": "image"
+  },
+  "Moments/banff.mp4": {
+    "small": "media/Moments-banff.mp4",
+    "large": "media/Moments-banff.mp4",
+    "poster": "media/Moments-banff-poster.webp",
+    "type": "video"
+  },
+  "Moments/copy_02F64FF5-6B85-46EB-9C0D-A54C0FF1E6FE.MOV": {
+    "small": "media/Moments-copy_02F64FF5-6B85-46EB-9C0D-A54C0FF1E6FE.mp4",
+    "large": "media/Moments-copy_02F64FF5-6B85-46EB-9C0D-A54C0FF1E6FE.mp4",
+    "poster": "media/Moments-copy_02F64FF5-6B85-46EB-9C0D-A54C0FF1E6FE-poster.webp",
+    "type": "video"
+  },
+  "Moments/IMG_7652.JPEG": {
+    "small": "media/Moments-IMG_7652-720.webp",
+    "large": "media/Moments-IMG_7652-1800.webp",
+    "width": 1536,
+    "height": 2048,
+    "type": "image"
+  },
+  "Moments/IMG_8816.JPEG": {
+    "small": "media/Moments-IMG_8816-720.webp",
+    "large": "media/Moments-IMG_8816-1800.webp",
+    "width": 2364,
+    "height": 1330,
+    "type": "image"
+  }
+}

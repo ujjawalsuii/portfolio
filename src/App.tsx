@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import { AmbientField } from './components/ambient/AmbientField'
 import { Hero } from './components/Hero'
 import { Showcase } from './components/showcase/Showcase'
 import { About } from './components/About'
@@ -7,34 +5,24 @@ import { TechArsenal } from './components/TechArsenal'
 import { Projects } from './components/Projects'
 import { Gallery } from './components/Gallery'
 import { Navigation } from './components/Navigation'
-import { CustomCursor } from './components/CustomCursor'
 import { Experience } from './components/Experience'
 import { Contact } from './components/Contact'
-import { LoadingScreen } from './components/LoadingScreen'
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
-
-  return (
-    <>
-      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
-      <div className="app-container" style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.3s' }}>
-        <AmbientField />
-        <CustomCursor />
-        <Navigation />
-        <main>
-          <Hero />
-          <Showcase />
-          <About />
-          <Experience />
-          <Projects />
-          <TechArsenal />
-          <Gallery />
-          <Contact />
-        </main>
-      </div>
-    </>
-  )
+  return <>
+    <a className="skip-link" href="#main">Skip to content</a>
+    <Navigation />
+    <main id="main">
+      <Hero />
+      <Projects />
+      <About />
+      <Experience />
+      <TechArsenal />
+      <Showcase />
+      <Gallery />
+      <Contact />
+    </main>
+  </>
 }
 
 export default App
