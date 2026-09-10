@@ -4,7 +4,7 @@ import { ArrowUpRight, Menu, X } from 'lucide-react'
 const sections = [
   { id: 'home', label: 'Home' }, { id: 'projects', label: 'Projects' },
   { id: 'about', label: 'About' }, { id: 'experience', label: 'Experience' },
-  { id: 'skills', label: 'Skills' }, { id: 'signature', label: 'Signature' },
+  { id: 'skills', label: 'Skills' },
   { id: 'gallery', label: 'Gallery' }, { id: 'contact', label: 'Contact' },
 ]
 

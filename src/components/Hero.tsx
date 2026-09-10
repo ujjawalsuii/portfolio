@@ -1,26 +1,37 @@
 import { ArrowDown, ArrowUpRight } from 'lucide-react'
-import { PortfolioImage } from './PortfolioImage'
 
 export const Hero = () => (
-  <section className="hero section-shell" id="home" aria-labelledby="hero-title">
-    <div className="hero-topline mono"><span>Welcome / Portfolio</span><span>Computing Science · University of Alberta</span></div>
-    <div className="hero-composition">
-      <div className="hero-type">
-        <p className="hero-role mono">The Architect <span aria-hidden="true">+</span> AI / Systems / Web</p>
-        <h1 id="hero-title"><span>UJJAWAL</span><span>PRATAP<span className="name-period">.</span></span></h1>
-        <div className="hero-statement"><p>Engineered with Discipline.<br /><span>Driven by Impact.</span></p><a href="#projects" className="round-link" aria-label="Explore projects"><ArrowDown size={28} strokeWidth={1.5} /></a></div>
+  <section className="alpine-hero" id="home" aria-labelledby="hero-title">
+    <div className="hero-scene">
+      <div className="alpine-photo" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 640px)" srcSet={`${import.meta.env.BASE_URL}alpine-original.jpeg`} />
+          <img src={`${import.meta.env.BASE_URL}alpine-panorama.webp`} alt="" width="1672" height="941" fetchPriority="high" />
+        </picture>
       </div>
-      <figure className="hero-portrait">
-        <div className="portrait-image"><PortfolioImage source="Me.jpg" alt="Ujjawal Pratap" fetchPriority="high" sizes="(max-width: 540px) 29vw, 30vw" /><span className="portrait-corner" aria-hidden="true">↗</span></div>
-        <figcaption className="mono"><span>Ujjawal Pratap</span><span>01 / The person</span></figcaption>
-      </figure>
+      <div className="hero-vignette" aria-hidden="true" />
+      <div className="hero-grain" aria-hidden="true" />
+      <div className="hero-scene-content section-shell">
+        <div className="hero-topline mono"><span>Welcome / Portfolio</span><span>Computing Science<br />University of Alberta</span></div>
+        <div className="alpine-title-block">
+          <p className="hero-role mono"><span className="hero-rule" />The Architect<span className="hero-disciplines">AI / Systems / Web</span></p>
+          <h1 id="hero-title"><span>UJJAWAL</span><span>PRATAP<span className="alpine-period">.</span></span></h1>
+          <p className="hero-manifesto">Engineered with Discipline.<br /><span>Driven by Impact.</span></p>
+        </div>
+        <div className="hero-scene-footer">
+          <p>Final-year Computing Science at the University of Alberta.<br /><span>Building high-performance systems with elite discipline.</span></p>
+          <a href="#projects" className="hero-explore"><span className="mono">Explore the work</span><span className="round-link"><ArrowDown size={23} strokeWidth={1.25} /></span></a>
+        </div>
+        <span className="hero-side-note mono" aria-hidden="true">Absolute focus. Continuous improvement.</span>
+      </div>
     </div>
-    <div className="hero-bottom"><p>Final-year Computing Science at the University of Alberta.<br /><span>Building high-performance systems with elite discipline.</span></p><a className="text-link" href="#about">Explore <ArrowUpRight size={18} /></a></div>
-    <div className="proof-strip">
-      <a href="#experience"><strong>99<span>/100</span></strong><span className="mono">Lighthouse performance</span></a>
-      <a href="#projects"><strong>Top 5</strong><span className="mono">TELUS hackathon</span></a>
-      <a href="#about"><strong>$10,000</strong><span className="mono">Regional Excellence Scholarship</span></a>
-      <span className="proof-note mono">Absolute focus.<br />Continuous improvement.<ArrowDown size={20} /></span>
+    <div className="hero-proof section-shell">
+      <div className="proof-strip">
+        <a href="#experience"><strong>99<span>/100</span></strong><span className="mono">Lighthouse performance</span></a>
+        <a href="#projects"><strong>Top 5</strong><span className="mono">TELUS hackathon</span></a>
+        <a href="#about"><strong>$10,000</strong><span className="mono">Regional Excellence Scholarship</span></a>
+        <a href="#about" className="proof-about"><span className="mono">The person<br />behind the work</span><ArrowUpRight size={23} strokeWidth={1.25} /></a>
+      </div>
     </div>
   </section>
 )

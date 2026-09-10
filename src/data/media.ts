@@ -8,6 +8,7 @@ export const mediaAsset = (path: string, size: 'small' | 'large' = 'large') => o
 export const mediaPoster = (path: string) => variants[path]?.poster ? originalAsset(variants[path].poster!) : undefined
 export const mediaDimensions = (path: string) => ({ width: variants[path]?.width, height: variants[path]?.height })
 export const mediaSourceSet = (path: string) => {
+  if (!variants[path]) return undefined
   const { width = 1800, height = 1800 } = variants[path] ?? {}
   const scaledWidth = (limit: number) => Math.round(width * Math.min(1, limit / width, (limit * 2) / height))
   return `${mediaAsset(path, 'small')} ${scaledWidth(720)}w, ${mediaAsset(path)} ${scaledWidth(1800)}w`

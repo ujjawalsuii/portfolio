@@ -7,7 +7,7 @@ export const About = () => (
     <div className="section-shell content-section">
       <SectionHeading number="02" label="The Architect" title="About Me." />
       <div className="about-layout">
-        <figure className="about-photo"><PortfolioImage source="Me.jpg" alt="Ujjawal Pratap" loading="lazy" sizes="(max-width: 540px) 90vw, 30vw" /><figcaption className="mono">Ujjawal Pratap <span>↗</span></figcaption></figure>
+        <figure data-depth className="about-photo"><PortfolioImage source="Me.jpg" alt="Ujjawal Pratap" loading="lazy" sizes="(max-width: 540px) 90vw, 30vw" /><figcaption className="mono">Ujjawal Pratap <span>↗</span></figcaption></figure>
         <div className="about-copy">
           <p className="about-intro">I'm a final-year Computing Science student at the <strong>University of Alberta</strong>, on a <strong>$10,000 Regional Excellence Scholarship</strong>&nbsp;— but my journey isn't just about code.</p>
           <div className="about-paragraphs">

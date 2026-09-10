@@ -12,7 +12,7 @@ await build({
 const { default: App } = await import('../.checks.local/app.mjs')
 const html = renderToStaticMarkup(createElement(App))
 const plain = html.replace(/<[^>]*>/g, ' ').replace(/&#x27;|&#39;/g, "'").replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ')
-for (const id of ['home', 'projects', 'about', 'experience', 'skills', 'signature', 'gallery', 'contact']) {
+for (const id of ['home', 'projects', 'about', 'experience', 'skills', 'gallery', 'contact']) {
   assert.equal((html.match(new RegExp(`id="${id}"`, 'g')) || []).length, 1, `Missing or duplicated section: ${id}`)
 }
 assert.equal((html.match(/class="project-row/g) || []).length, 7)
@@ -42,5 +42,7 @@ for (const link of ['https://kritanshiboutique.com/', 'https://github.com/Gfewq/
 }
 for (const hash of [...html.matchAll(/href="#([^"]+)"/g)].map(match => match[1])) assert(html.includes(`id="${hash}"`), `Broken section link: ${hash}`)
 assert(!html.includes('opacity:0'), 'Main content must not depend on an animation finishing')
+assert(!html.includes('id="signature"'), 'Removed plume section must not be rendered')
+assert(html.includes('alpine-panorama.webp'), 'Alpine hero photo must be present')
 fs.writeFileSync('.checks.local/rendered.html', html)
 console.log('Server render passed: all sections, biography text, records, gallery covers, links and navigation targets are present.')

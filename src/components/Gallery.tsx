@@ -10,7 +10,7 @@ type Media = { type: string; src: string }
 type Category = typeof galleryCategories[number]
 const albumMedia = (id: string): Media[] => id === 'family'
   ? [{ type: 'image', src: familyStories[0].image }, ...familyMedia]
-  : id === 'adventures' ? adventuresMedia : momentsMedia
+  : id === 'adventures' ? [...adventuresMedia, { type: 'image', src: 'alpine-original.jpeg' }] : momentsMedia
 
 function Dialog({ children, titleId, onClose, className = '', onKeyDown }: {
   children: ReactNode; titleId: string; onClose: () => void; className?: string
@@ -59,9 +59,9 @@ export const Gallery = () => {
   return <>
     <section id="gallery" className="gallery-section">
       <div className="section-shell content-section">
-        <SectionHeading number="06" label="Memories" title="Loved Ones." meta="Family / Adventures / Moments" />
+        <SectionHeading number="05" label="Memories" title="Loved Ones." meta="Family / Adventures / Moments" />
         <div className="gallery-covers">
-          {galleryCategories.map((cat, index) => <button className="gallery-cover" key={cat.id} onClick={event => openAlbum(cat, event.currentTarget)} aria-label={`Open ${cat.title} gallery`}>
+          {galleryCategories.map((cat, index) => <button data-depth className="gallery-cover" key={cat.id} onClick={event => openAlbum(cat, event.currentTarget)} aria-label={`Open ${cat.title} gallery`}>
             <span className="gallery-cover-image"><PortfolioImage source={cat.cover} alt={cat.title} loading="lazy" sizes="(max-width: 540px) 90vw, 33vw" /><span className="gallery-cover-overlay"><ArrowUpRight size={23} strokeWidth={1.4} /></span></span>
             <span className="gallery-cover-caption"><strong>{cat.title}</strong><span className="mono">{String(index + 1).padStart(2, '0')} / {albumMedia(cat.id).length} memories</span></span>
           </button>)}

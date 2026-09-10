@@ -120,5 +120,12 @@
     "width": 2364,
     "height": 1330,
     "type": "image"
+  },
+  "alpine-original.jpeg": {
+    "small": "media/alpine-original-720.webp",
+    "large": "media/alpine-original-1800.webp",
+    "type": "image",
+    "width": 1200,
+    "height": 1600
   }
 }
