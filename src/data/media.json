@@ -125,7 +125,7 @@
     "small": "media/alpine-original-720.webp",
     "large": "media/alpine-original-1800.webp",
     "type": "image",
-    "width": 1200,
-    "height": 1600
+    "width": 1536,
+    "height": 2048
   }
 }

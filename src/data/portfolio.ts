@@ -10,7 +10,7 @@ export const projects = [
     },
     {
         name: 'Leo the Lion',
-        subtitle: 'AI & Healthcare · TELUS Top 5',
+        subtitle: 'AI & Healthcare · TELUS Top 6',
         desc: 'Pediatric health companion grounding Gemma 3 in medical protocols through a Python RAG engine.',
         tags: ['React 18', 'FastAPI', 'RAG'],
         link: 'https://github.com/Gfewq/Team'
@@ -84,8 +84,8 @@ export const experiences = [
         date: 'Jan - Feb 2026',
         kind: 'project',
         title: 'Leo the Lion',
-        subtitle: 'AI Pediatric Health Platform · TELUS Hackathon, Top 5',
-        desc: 'Dual-interface health companion serving separate child and parent clients from one FastAPI service, placing top 5 in the field at the TELUS hackathon. Cut perceived latency 40% with a bi-directional Server-Sent Events streaming layer for instant voice and text interaction. Grounded model responses in medical protocols through a Python RAG engine built on Hugging Face Sentence Transformers and Google Gemma 3, and shipped in-browser object detection with TensorFlow.js (Coco-SSD) plus a Web Speech API voice persona.',
+        subtitle: 'AI Pediatric Health Platform · TELUS Hackathon, Top 6',
+        desc: 'Dual-interface health companion serving separate child and parent clients from one FastAPI service, placing top 6 in the field at the TELUS hackathon. Cut perceived latency 40% with a bi-directional Server-Sent Events streaming layer for instant voice and text interaction. Grounded model responses in medical protocols through a Python RAG engine built on Hugging Face Sentence Transformers and Google Gemma 3, and shipped in-browser object detection with TensorFlow.js (Coco-SSD) plus a Web Speech API voice persona.',
         status: 'completed',
         tags: ['React 18', 'FastAPI', 'RAG', 'Gemma 3', 'TensorFlow.js', 'SSE']
     },

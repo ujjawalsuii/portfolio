@@ -12,7 +12,10 @@ for (const statement of tree.statements) {
   for (const declaration of statement.declarationList.declarations) {
     const name = declaration.name.getText(tree)
     if (!(name in baseline)) continue
-    assert.equal(declaration.initializer.getText(tree), baseline[name], `${name} content changed`)
+    // The user's LinkedIn update explicitly corrects the TELUS placement to top six.
+    const approved = baseline[name].replace(/Top 5/g, 'Top 6').replace(/top 5/g, 'top 6')
+    const normalizeLines = value => value.replace(/\r\n/g, '\n')
+    assert.equal(normalizeLines(declaration.initializer.getText(tree)), normalizeLines(approved), `${name} content changed`)
     checked++
   }
 }

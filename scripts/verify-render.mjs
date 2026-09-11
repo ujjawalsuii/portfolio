@@ -20,15 +20,16 @@ assert.equal((html.match(/class="timeline-entry/g) || []).length, 11)
 assert.equal((html.match(/class="skill-category"/g) || []).length, 6)
 assert.equal((html.match(/class="gallery-cover"/g) || []).length, 3)
 for (const text of [
-  "I'm a final-year Computing Science student at the University of Alberta , on a $10,000 Regional Excellence Scholarship — but my journey isn't just about code.",
-  "I've shipped production software for a paying client as sole developer, and placed top 5 at the TELUS hackathon building an AI health platform.",
-  'Whether optimizing a C-based Ray Tracer or pushing for a 225lb bench press , I apply the same philosophy: absolute focus and continuous improvement.',
-  'Influenced by the mentality of greats like Ronaldo and Verstappen, I believe in speed, precision, and resilience.',
-  'I solve problems with the intensity of a competitor.',
-  'Leverage technology to support my family and build real value.',
-  'Sim Racing, photography, and the gym.',
+  "I am a fourth-year Computing Science student at the University of Alberta",
+  "Most of what I know came from shipping things rather than from lectures. This past summer I built a production storefront and an internal admin tool as the sole developer for a retail client in Abu Dhabi, from requirements through to release. The part I care about is that the owner runs it themselves now, publishing and editing content with no developer involved. I enforced admin-only writes at the database layer with Postgres Row Level Security rather than trusting the application to behave, and wrote an automated probe that runs on every deploy confirming an anonymous client cannot write, read privileged tables, self-register, or upload.",
+  "I work across the stack. On the frontend that means React, Next.js, and TypeScript. On the backend, Django REST Framework, FastAPI, and Postgres. I have also spent time further down: a 3D ray tracing engine in C99 with manual memory management and no external math libraries, and a binary translator that compiles RISC-V machine code into executable WebAssembly.",
+  "My other interest is applied machine learning. At the TELUS hackathon my team placed top six with a pediatric health platform that grounded model responses in medical protocol documents through a Python retrieval pipeline, serving separate child and parent interfaces from a single API.",
+  "Outside of code, I spent a term as VP Media for the Indian Students Association, where I brought generative AI tooling into a manual content pipeline and used engagement data to reschedule posting, contributing to a sold-out cultural event.",
+  "I’m open to internship opportunities and collaborations in software development and engineering. Feel free to reach out to discuss potential projects or ideas!",
+  "Top skills",
+  "Python (Programming Language)",
   "Whether you have a project in mind, want to collaborate, or just want to connect, I'm always open to discussing new opportunities.",
-  'Discipline is the bridge between goals and accomplishment.',
+  "Discipline is the bridge between goals and accomplishment."
 ]) {
   const normalize = value => value.replace(/\s+([,.])/g, '$1').replace(/\s+/g, ' ').trim()
   assert(normalize(plain).includes(normalize(text)), `Missing biography or contact text: ${text}`)
@@ -44,5 +45,7 @@ for (const hash of [...html.matchAll(/href="#([^"]+)"/g)].map(match => match[1])
 assert(!html.includes('opacity:0'), 'Main content must not depend on an animation finishing')
 assert(!html.includes('id="signature"'), 'Removed plume section must not be rendered')
 assert(html.includes('alpine-panorama.webp'), 'Alpine hero photo must be present')
+assert(html.includes('alpine-original.webp'), 'High-resolution mobile hero must be present')
+assert(!/top 5/i.test(plain), 'TELUS placement must match the supplied LinkedIn update')
 fs.writeFileSync('.checks.local/rendered.html', html)
 console.log('Server render passed: all sections, biography text, records, gallery covers, links and navigation targets are present.')

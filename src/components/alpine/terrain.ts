@@ -1,4 +1,5 @@
 import { BufferGeometry, Color, Float32BufferAttribute } from 'three'
+import { assignLayers, sliceTerrain } from './geology'
 
 const mix = (a: number, b: number, t: number) => a + (b - a) * t
 const clamp = (n: number) => Math.max(0, Math.min(1, n))
@@ -30,9 +31,10 @@ export function terrainHeight(x: number, z: number) {
     elevation = Math.max(elevation, peak.h * Math.exp(-Math.sqrt(dx * dx + dz * dz) * 1.03))
   })
   const ridge = 1 - Math.abs(fbm(x * 2.7 + 10, z * 2.7) * 2 - 1)
-  const detail = (fbm(x * 6.5, z * 6.5) - .5) * .12
+  const erosion = Math.pow(1 - Math.abs(noise(x * 8 + warp * 2, z * 8) * 2 - 1), 3)
+  const detail = (fbm(x * 13, z * 13) - .5) * .035 - erosion * .095 * Math.min(1, elevation)
   const edge = smooth((1 - Math.hypot(x / 3.95, z / 3.05)) * 5)
-  return Math.max(.02, (elevation + ridge * .36 + detail) * edge)
+  return Math.max(.02, (elevation + ridge * .26 + detail) * edge)
 }
 
 export function buildTerrain(segments = 150) {
@@ -60,7 +62,7 @@ export function buildTerrain(segments = 150) {
     const x = vertices[i * 3], y = vertices[i * 3 + 1], z = vertices[i * 3 + 2]
     const variation = noise(x * 19, z * 19)
     color.copy(dark).lerp(rock, clamp(y * .23 + variation * .25))
-    const snowline = smooth((y + fbm(x * 3, z * 3) * .55 - 1.05) / .8)
+    const snowline = smooth((y + fbm(x * 3, z * 3) * .55 - 1.4) / .8)
     const slope = smooth((normals.getY(i) - .43) / .37)
     color.lerp(snow, snowline * Math.max(.15, slope))
     colors.push(color.r, color.g, color.b)
@@ -80,7 +82,7 @@ export function buildTerrain(segments = 150) {
   sides.setAttribute('position', new Float32BufferAttribute(sideVertices, 3)); sides.setIndex(sideIndices); sides.computeVertexNormals()
 
   const lines: number[] = []
-  const lineGrid = 90
+  const lineGrid = segments > 150 ? 128 : 90
   const field: number[][] = []
   for (let z = 0; z <= lineGrid; z++) {
     field[z] = []
@@ -105,5 +107,7 @@ export function buildTerrain(segments = 150) {
   }
   const contours = new BufferGeometry()
   contours.setAttribute('position', new Float32BufferAttribute(lines, 3))
-  return { geometry, sides, contours }
+  const sliced = sliceTerrain(geometry)
+  geometry.dispose()
+  return { geometry: sliced.surface, caps: sliced.caps, sides: assignLayers(sides), contours: assignLayers(contours) }
 }

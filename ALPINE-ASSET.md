@@ -1,24 +1,30 @@
-# Alpine hero asset
+# Updated alpine hero asset
 
-Created with the built-in image generation tool in edit mode, using the supplied mountain photograph. No external stock assets were used.
+Built-in image generation, edit mode. Updated from the user-supplied IMG_8938.JPEG, 1536 × 2048. The MPO input was losslessly normalized before generation.
 
 Saved assets:
-- `public/alpine-original.jpeg`: untouched supplied photograph; also available in the Adventures gallery.
-- `public/alpine-panorama.png`: generated wide photographic extension, 1672 × 941.
-- `public/alpine-panorama.webp`: optimized delivery copy of the selected extension.
-- `public/media/alpine-original-720.webp` and `public/media/alpine-original-1800.webp`: responsive gallery delivery copies.
+- public/alpine-original.jpeg: untouched supplied higher-quality file, replacing the previous lower-quality copy.
+- public/alpine-original.webp: full-resolution mobile hero, 1536 × 2048.
+- public/alpine-panorama.png: refreshed panoramic extension, 1672 × 941.
+- public/alpine-panorama.webp: high-quality delivery copy of that panorama.
+- public/media/alpine-original-720.webp and public/media/alpine-original-1800.webp: responsive gallery copies.
 
-The panoramic surroundings are an AI extension, not documentary evidence of the location. The original photograph remains available. The separate interactive mountain is a custom procedural Three.js mesh inspired by the alpine direction, not a geographical reconstruction.
+The generation tool returned 1672 × 941 despite a request for a higher pixel count. No artificial upscaling is used. The original supplied photo remains available in Adventures. The panoramic landscape is an AI extension; the procedural 3D mountain is artistic rather than a geographical reconstruction.
 
-## Final generation prompt
+## Exact generation prompt
 
-Use case: identity-preserve
-Asset type: production landscape hero photograph for a cinematic alpine personal portfolio.
-Input image 1 is the EDIT TARGET, not a loose visual reference. Outpaint and extend this exact supplied personal photograph into one wide 16:9 panoramic photograph, ideally 2048x1152 or native landscape output.
-Primary request: photographically extend the alpine landscape to the sides and reframe so the original person is full body, located at approximately 72% of the frame width near the lower right third, with their feet at approximately 90% of frame height. Keep their scale natural, around 32–38% of total image height.
-Preserve the original person exactly: the same rear/side-facing pose looking to the right, exact dark curly hair silhouette and visible face profile, navy short-sleeved shirt, light trousers, dark boots, red backpack with teal straps, garments tied around the waist, original arms and hands, body proportions, identity, and all existing belongings. Do not invent or alter equipment. Treat the person as a protected photographic cutout; do not redesign or beautify them.
-Scene/backdrop: preserve the recognizable central snow-streaked mountain peak, rugged layered rocky ridges, distant blue mountains, and foreground scree from the original photograph where possible. Realistically outpaint a continuous panoramic alpine range to the left and right with matching geology, perspective, and daylight. Keep subtle atmospheric depth through successive mountain layers.
-Composition: broad sweeping cool blue/steel sky and distant mountains across the left 60% of the image, leaving natural unobstructed negative space suitable for later white portfolio typography. Keep the foreground ledge beneath the person's feet. Wide cinematic photographic composition.
-Style/medium: realistic premium outdoor photography, not illustration or a 3D render. Crisp natural photographic detail, cool clear daylight, subtle cinematic contrast and atmosphere without excessive grading.
-Constraints: change framing and extend the surroundings only while preserving the person's identity, appearance and pose. No text, letters, logos, watermark, UI, graphics, extra people, invented equipment, fantasy elements, or dramatic fake snowstorm. Deliver one finished image.
+Use case: identity-preserve.
+Asset type: one photorealistic 16:9 alpine panorama for a portfolio website hero.
 
+Input image 1 (alpine-original-normalized.png, losslessly decoded from IMG_8938.JPEG): the higher-quality original photograph and EDIT TARGET. Use this as the source of truth for the person's precise identity, anatomy, hair, clothing, belongings, lighting, real photographic textures, and the photographed mountain landscape.
+Input image 2 (alpine-panorama.png): COMPOSITION-ONLY reference. Match its recognizable broad panoramic framing and cool blue alpine atmosphere; do not use its lower-resolution person or its softened textures as source material.
+
+Primary request: extend and reframe the higher-quality original photo into a wide 16:9 panorama, keeping the photographed person unchanged in appearance and pose. Request the maximum supported native output resolution, ideally 3072 by 1728 pixels, or at least 2048 pixels wide. Preserve crisp photographic detail in rock strata, gravel, hair, clothing folds, and backpack fabric without invented microtexture, fake sharpening, halos, or overprocessed HDR.
+
+Composition: broad cool blue sky and layered mountain range with spacious usable negative space across the left 60% of the image. Place the same full-body person near the right side, centered at approximately 70% of image width, feet approximately 95% down the image, total person height approximately 40% of image height. Preserve the existing panorama's recognizable relationship between the rocky foreground, layered valley on the left, snowy central distant peak, ridgeline, and person on the right. Keep the full person and both boots visible. Natural, seamless expansion of the original mountainous landscape, with realistic depth, perspective, and atmospheric haze.
+
+Subject invariants: the exact same person from input image 1, in the same rear/side pose facing right, same face/profile and skin tone, same dark curly hair, navy short-sleeved shirt, light trousers, red backpack with teal straps, light garment tied around the waist, dark boots, and all original belongings. Preserve body proportions, arm and hand positions, stance, backpack shape, straps, clothing silhouette, and footwear. Do not redesign, beautify, substitute, or restyle the person. Treat identity and clothing fidelity as paramount.
+
+Style and lighting: natural real-camera outdoor photography. Preserve the cool blue palette and daylight/backlighting visible in the original; detailed yet believable shadows. Maintain realistic mountain rock, sparse alpine vegetation, and stony foreground texture.
+
+Constraints: one final image only. No typography, UI, logos, watermarks, extra people, added props, cartoon or painterly effects. No artificial extreme contrast or excessive saturation.

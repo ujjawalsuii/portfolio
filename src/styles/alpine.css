@@ -92,6 +92,10 @@ a:focus-visible, button:focus-visible { outline-color: #b5def6 }
 .about-intro strong, .about-paragraphs strong { color: #e8f1f8 }
 .about-values .mono { color: #b5def6 }
 .about-copy>.text-link { color: #c0dff2 }
+.about-top-skills { margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--line) }
+.about-top-skills h3 { color: var(--accent); font-weight: 400 }
+.about-top-skills ul { display: flex; flex-wrap: wrap; gap: 10px 22px; list-style: none; margin: 16px 0 0; padding: 0 }
+.about-top-skills li { color: #c0d2e0; font-size: .9rem; line-height: 1.8 }
 .experience-section { background: linear-gradient(90deg, transparent, #060d1480 40%, #060d14c2) }
 .timeline-entry { padding-bottom: 42px; margin-bottom: 40px }
 .timeline-entry::before { border-color: #86aec9; background: #0b1925 }
