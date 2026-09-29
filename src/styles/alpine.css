@@ -96,7 +96,8 @@ a:focus-visible, button:focus-visible { outline-color: #b5def6 }
 .about-top-skills h3 { color: var(--accent); font-weight: 400 }
 .about-top-skills ul { display: flex; flex-wrap: wrap; gap: 10px 22px; list-style: none; margin: 16px 0 0; padding: 0 }
 .about-top-skills li { color: #c0d2e0; font-size: .9rem; line-height: 1.8 }
-.experience-section { background: linear-gradient(90deg, transparent, #060d1480 40%, #060d14c2) }
+.experience-section { position: relative; isolation: isolate; --experience-shade: linear-gradient(90deg, transparent, #060d1480 40%, #060d14c2) }
+.experience-section::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: var(--experience-shade); mask-image: linear-gradient(#000 calc(100% - 260px), transparent) }
 .timeline-entry { padding-bottom: 42px; margin-bottom: 40px }
 .timeline-entry::before { border-color: #86aec9; background: #0b1925 }
 .timeline-entry.kind-work::before { border-color: #acd9f4; background: #acd9f4; box-shadow: 0 0 18px #acd9f450 }
@@ -155,6 +156,61 @@ a:focus-visible, button:focus-visible { outline-color: #b5def6 }
 .reading-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 100; background: #b9e3fd; box-shadow: 0 0 10px #b9e3fd80; transform: scaleX(var(--reading-progress, 0)); transform-origin: left; pointer-events: none }
 .motion-toggle { position: fixed; right: 22px; bottom: 20px; z-index: 35; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 38px; padding: 9px 13px; border: 1px solid #9dc6e44d; border-radius: 30px; background: #081522d9; color: #b2cfe3; font-family: var(--mono); font-size: .6rem; letter-spacing: .04em; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: color .2s, border-color .2s }
 .motion-toggle:hover { color: #fff; border-color: #b5def6 }
+/* The route over the mountain: altitude gauge, strata pointer, exploded stack, trail position and night register. */
+html[data-motion="off"] { scroll-behavior: auto }
+.alpine-photo { transition: opacity .7s ease }
+.hero-scene { transition: background-color .7s ease }
+html[data-hero-depth="on"] .alpine-photo { opacity: 0 }
+html[data-hero-depth="on"] .hero-scene { background-color: transparent }
+html[data-strata="hover"] body { cursor: pointer }
+.altimeter { display: none; position: fixed; left: 20px; top: 50%; z-index: 30; transform: translateY(-46%); transition: opacity .6s }
+html[data-chapter="home"] .altimeter:not(:focus-within) { opacity: 0; pointer-events: none }
+.altimeter-readout { display: grid; gap: 3px; width: 46px; margin-bottom: 16px; font-size: .5rem; line-height: 1.45; letter-spacing: .08em; color: #7f9fb6 }
+.altimeter-readout>span:first-child { color: #d9eefb; font-size: .66rem; letter-spacing: .04em; font-variant-numeric: tabular-nums; white-space: nowrap }
+.altimeter-track { position: relative; width: 30px; height: min(44vh, 400px) }
+.altimeter-track svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible }
+.altimeter-track path { fill: none; stroke: #a5c9e533; stroke-width: 1; vector-effect: non-scaling-stroke }
+.altimeter-travelled { position: absolute; inset: 0; clip-path: inset(0 -20px calc((1 - var(--reading-progress, 0)) * 100%) -20px) }
+.altimeter-travelled path { stroke: #b5def6; filter: drop-shadow(0 0 3px #b5def680) }
+.altimeter ol { list-style: none; margin: 0; padding: 0 }
+.altimeter li { position: absolute; top: calc(var(--stop) * 100%); left: calc(var(--stop-altitude) * 100%) }
+.altimeter a { position: absolute; display: flex; align-items: center; gap: 10px; padding: 5px; transform: translate(-8px, -8px) }
+.altimeter a:focus-visible { outline-offset: 0 }
+.altimeter-dot { flex-shrink: 0; width: 6px; height: 6px; border: 1px solid #a5c9e5b0; border-radius: 50%; background: #060d14; transition: background .25s, transform .25s }
+.altimeter a:hover .altimeter-dot, .altimeter a:focus-visible .altimeter-dot { background: #b5def6; transform: scale(1.4) }
+.altimeter-label { opacity: 0; transform: translateX(-4px); padding: 5px 9px; border: 1px solid #9dc6e44d; background: #081522e8; color: #dcefff; font-size: .55rem; letter-spacing: .08em; white-space: nowrap; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: opacity .25s, transform .25s; pointer-events: none }
+.altimeter-label>span { margin-left: 9px; color: #86a8bf }
+.altimeter a:hover .altimeter-label, .altimeter a:focus-visible .altimeter-label { opacity: 1; transform: none }
+.altimeter-marker { position: absolute; top: calc(var(--reading-progress, 0) * 100%); left: calc(var(--altitude, 0) * 100%); width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: #c6e8fd; box-shadow: 0 0 0 4px #b9e3fd1f, 0 0 14px #b9e3fda0; pointer-events: none }
+.stack-labels { position: absolute; inset: 0; z-index: 1 }
+.stack-label { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 8px; opacity: 0; color: #9dbdd2; font-size: .54rem; letter-spacing: .12em; white-space: nowrap; transition: color .3s }
+.stack-label>span { color: #5f8299 }
+.stack-label::after { content: ''; width: 26px; height: 1px; background: currentColor; opacity: .55 }
+.stack-label.is-focused { color: #eaf7ff }
+.stack-label.is-focused>span { color: #b5def6 }
+.strata-tip { position: fixed; left: 0; top: 0; z-index: 60; padding: 6px 10px; border: 1px solid #9dc6e455; background: #081522eb; color: #e3f4ff; font-size: .56rem; letter-spacing: .08em; white-space: nowrap; opacity: 0; pointer-events: none; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: opacity .2s }
+.strata-tip.is-visible { opacity: 1 }
+.skills-section { position: relative }
+.skills-stack-note { display: none }
+.skill-category.is-linked { background: #12293bdd; border-color: #9dcce590 }
+.skill-category.is-pinged { animation: stratum-ping 1s cubic-bezier(.2,.7,.2,1) }
+@keyframes stratum-ping { from { box-shadow: 0 0 0 0 #b9e3fd70 } to { box-shadow: 0 0 0 22px #b9e3fd00 } }
+.timeline-entry::before { transition: background .4s, border-color .4s, box-shadow .4s, transform .4s }
+.timeline-entry.is-current::before { border-color: #d3efff; background: #d3efff; box-shadow: 0 0 0 5px #b9e3fd1c, 0 0 20px #b9e3fdaa; transform: scale(1.25) }
+.timeline-entry.is-current .timeline-title>.mono { color: #b9e3fd }
+.contact-register { color: #7fa6c2 }
+.contact-sign { display: block; margin-top: 30px; color: #7fa6c2; font-size: .6rem; letter-spacing: .12em }
+.contact-sign+.contact-email { margin-top: 10px }
+@media (min-width: 1100px) {
+  .about-section { background: linear-gradient(100deg, #08142114 0%, #08142166 22%, #07111be0 43%, #07111bfa 70%) }
+  .skills-section { display: grid; grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); align-items: start }
+  .skills-section>.section-heading { grid-column: 1 / -1 }
+  .skills-grid { grid-column: 1; grid-row: 2; grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .skills-stack-note { display: block; grid-column: 2; grid-row: 2; justify-self: end; position: sticky; top: 118px; color: #a7d2ef; font-size: .6rem; letter-spacing: .1em; text-align: right }
+  .skills-stack-note>span { color: #7195ad }
+}
+@media (max-width: 1099px) { .stack-labels { display: none } }
+@media (min-width: 1200px) { .altimeter { display: block } }
 @keyframes title-arrive { from { opacity: .1; transform: translate3d(0, 35px, 0) } to { opacity: 1; transform: none } }
 html[data-motion="off"] .alpine-photo, html[data-motion="off"] .alpine-title-block, html[data-motion="off"] [data-depth], html[data-motion="off"] .reveal-item { transform: none!important }
 html[data-motion="off"] *, html[data-motion="off"] *::before, html[data-motion="off"] *::after { animation: none!important; transition-duration: .01ms!important; scroll-behavior: auto!important }
@@ -200,7 +256,7 @@ html[data-motion="off"] .reveal-item { opacity: 1 }
   .project-description { grid-column: 2/4 }
   .project-row:hover { padding-left: 22px }
   .project-row.project-featured:hover { padding-left: 22px }
-  .experience-section { background: #07121eb8 }
+  .experience-section { --experience-shade: #07121eb8 }
   .skill-category { padding: 28px 24px }
   .contact-section { padding-top: 100px }
   .contact-heading h2 { font-size: 11.5vw }

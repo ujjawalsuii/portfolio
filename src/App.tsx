@@ -8,6 +8,7 @@ import { Experience } from './components/Experience'
 import { Contact } from './components/Contact'
 import { AlpineWorld } from './components/alpine/AlpineWorld'
 import { SceneMotionProvider } from './components/alpine/SceneMotionProvider'
+import { Altimeter } from './components/Altimeter'
 
 function App() {
   return <SceneMotionProvider>
@@ -23,6 +24,7 @@ function App() {
       <Gallery />
       <Contact />
     </main>
+    <Altimeter />
   </SceneMotionProvider>
 }
 

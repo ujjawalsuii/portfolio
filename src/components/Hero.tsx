@@ -27,7 +27,7 @@ export const Hero = () => (
     </div>
     <div className="hero-proof section-shell">
       <div className="proof-strip">
-        <a href="#experience"><strong>99<span>/100</span></strong><span className="mono">Lighthouse performance</span></a>
+        <a href="#experience"><strong>99<span>/100</span></strong><span className="mono">Lighthouse · Kritanshi Boutique</span></a>
         <a href="#projects"><strong>Top 6</strong><span className="mono">TELUS hackathon</span></a>
         <a href="#about"><strong>$10,000</strong><span className="mono">Regional Excellence Scholarship</span></a>
         <a href="#about" className="proof-about"><span className="mono">The person<br />behind the work</span><ArrowUpRight size={23} strokeWidth={1.25} /></a>

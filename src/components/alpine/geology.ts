@@ -1,8 +1,6 @@
 import { BufferGeometry, Float32BufferAttribute, ShapeUtils, Vector2 } from 'three'
+import { layerAt, strata } from './heightfield'
 
-// Every split is a real cut, so surfaces separate without stretching triangles.
-export const strata = [-1, .18, .68, 1.16, 1.68, 2.25, 4.5]
-export const layerAt = (height: number) => Math.max(0, Math.min(strata.length - 2, strata.findIndex(top => top > height) - 1))
 type Vertex = number[] // position, normal, linear RGB
 function clip(polygon: Vertex[], height: number, above: boolean): Vertex[] {
   const result: Vertex[] = []
@@ -33,10 +31,7 @@ function collector() {
         ['position', positions, 3], ['normal', normals, 3], ['color', colors, 3],
         ['aLayer', layers, 1], ['aCut', cuts, 1],
       ] as const) geometry.setAttribute(key, new Float32BufferAttribute(array, itemSize))
-      geometry.computeBoundingSphere()
-      // Shader movement raises the top layer by at most 1.25 world units.
-      if (geometry.boundingSphere) geometry.boundingSphere.radius += 1.5
-      return geometry
+      return padBounds(geometry)
     },
   }
 }
@@ -131,9 +126,15 @@ function sectionLoops(segments: Array<[Vertex, Vertex]>) {
   }
   return loops
 }
+// Shader movement raises the top layer by at most about two world units in the exploded stack.
+function padBounds(geometry: BufferGeometry) {
+  geometry.computeBoundingSphere()
+  if (geometry.boundingSphere) geometry.boundingSphere.radius += 2.5
+  return geometry
+}
 export function assignLayers(geometry: BufferGeometry) {
   const position = geometry.getAttribute('position')
   geometry.setAttribute('aLayer', new Float32BufferAttribute(Array.from({ length: position.count }, (_, i) => layerAt(position.getY(i))), 1))
   geometry.setAttribute('aCut', new Float32BufferAttribute(new Float32Array(position.count), 1))
-  return geometry
+  return padBounds(geometry)
 }
